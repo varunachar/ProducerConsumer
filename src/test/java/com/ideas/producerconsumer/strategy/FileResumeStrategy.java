@@ -1,7 +1,6 @@
 
 package com.ideas.producerconsumer.strategy;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +27,6 @@ public class FileResumeStrategy implements ResumeStrategy
 	private final transient Log								log				= LogFactory.getLog(getClass());
 	private final static Map<Class<?>, Deserializer<?, ?>>	DESERIALIZERS	= new HashMap<Class<?>, Deserializer<?, ?>>();
 	private final static Map<String, String>				PRODUCERS		= new HashMap<String, String>();
-	private final File										file			= new File("C:\\Users\\Owner\\Desktop\\rejected.txt");
 	private ObjectMapper									objectMapper	= new ObjectMapper();
 	ReentrantReadWriteLock									lock			= new ReentrantReadWriteLock();
 	static
@@ -103,5 +101,4 @@ public class FileResumeStrategy implements ResumeStrategy
 	{
 		return TimeUnit.SECONDS.toMillis(10);
 	}
-	
 }

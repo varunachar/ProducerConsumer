@@ -24,4 +24,4 @@ If a ResumeStrategy has been specified, the queue needs to the told to start loo
 The example in the test folder shows how the queue can been used. It produces emails with file attachments. The task simply prints the email contents (doesn't actually send it). It utilizes full rejection and resumption capabilities of the queue.
 
 
-This is a maven project built for Java 5 and above. Non maven users will need to download Apache's CommonsIO and add to classpath for running the test. No other dependencies needed for the project.
+This is a maven project built for Java 5 and above. Non maven users will need to download Apache's CommonsIO and Jackson library and add to classpath for running the test. No other dependencies needed for the project.
