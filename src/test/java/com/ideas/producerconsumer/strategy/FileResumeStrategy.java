@@ -99,6 +99,6 @@ public class FileResumeStrategy implements ResumeStrategy
 	
 	public long getResumeTime()
 	{
-		return TimeUnit.SECONDS.toMillis(10);
+		return TimeUnit.SECONDS.toMillis(1);
 	}
 }

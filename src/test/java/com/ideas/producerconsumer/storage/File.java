@@ -44,6 +44,9 @@ public class File
 		catch(IOException e)
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
 			try
 			{
 				if(raf != null)
@@ -55,9 +58,6 @@ public class File
 			{
 				e1.printStackTrace();
 			}
-		}
-		finally
-		{
 			writeLock.unlock();
 		}
 	}
@@ -87,6 +87,9 @@ public class File
 		catch(IOException e)
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
 			try
 			{
 				if(raf != null)
@@ -98,9 +101,6 @@ public class File
 			{
 				e1.printStackTrace();
 			}
-		}
-		finally
-		{
 			readLock.unlock();
 		}
 		return lines;
@@ -125,28 +125,28 @@ public class File
 			raf = new RandomAccessFile(file, "rw");
 			long readPointerStart = 0;
 			long readPointerEnd = 0;
+			readPointerStart = raf.getFilePointer();
 			for(int i = 0; i < number; i++)
 			{
-				readPointerStart = raf.getFilePointer();
 				String readLine = raf.readLine();
 				if(readLine == null)
 				{
-					return lines;
+					break;
 				}
 				lines[i] = readLine;
-				readPointerEnd = raf.getFilePointer();
-				byte[] buf = new byte[1024];
-				int n;
-				while(-1 != (n = raf.read(buf)))
-				{
-					raf.seek(readPointerStart);
-					raf.write(buf, 0, n);
-					readPointerEnd += n;
-					readPointerStart += n;
-					raf.seek(readPointerEnd);
-				}
-				raf.setLength(readPointerStart);
 			}
+			readPointerEnd = raf.getFilePointer();
+			byte[] buf = new byte[1024];
+			int n;
+			while(-1 != (n = raf.read(buf)))
+			{
+				raf.seek(readPointerStart);
+				raf.write(buf, 0, n);
+				readPointerEnd += n;
+				readPointerStart += n;
+				raf.seek(readPointerEnd);
+			}
+			raf.setLength(readPointerStart);
 		}
 		catch(FileNotFoundException e)
 		{
@@ -155,6 +155,9 @@ public class File
 		catch(IOException e)
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
 			try
 			{
 				if(raf != null)
@@ -166,10 +169,8 @@ public class File
 			{
 				e1.printStackTrace();
 			}
-		}
-		finally
-		{
 			writeLock.unlock();
+			
 		}
 		return lines;
 		

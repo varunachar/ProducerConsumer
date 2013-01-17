@@ -6,11 +6,9 @@ import java.io.File;
 import com.ideas.producerconsumer.mediator.Queue;
 import com.ideas.producerconsumer.object.Email;
 import com.ideas.producerconsumer.object.EmailAttachment;
-import com.ideas.producerconsumer.producer.EmailProducer;
 import com.ideas.producerconsumer.resume.ResumeStrategy;
 import com.ideas.producerconsumer.strategy.FileRejectionStrategy;
 import com.ideas.producerconsumer.strategy.FileResumeStrategy;
-import com.ideas.producerconsumer.task.Task;
 
 public class ProducerConsumerTest
 {
@@ -23,7 +21,7 @@ public class ProducerConsumerTest
 		ResumeStrategy resumeStrategy = new FileResumeStrategy();
 		final Queue queue = new Queue(new FileRejectionStrategy(), resumeStrategy);
 		queue.start();
-		Runnable run = new Runnable()
+		/*Runnable run = new Runnable()
 		{
 			public void run()
 			{
@@ -44,7 +42,7 @@ public class ProducerConsumerTest
 				// Catching exceptions if any to avoid a hung process.
 				e.printStackTrace();
 			}
-		}
+		}*/
 		System.out.println("initiating shutdown");
 		//queue.shutdown();
 	}

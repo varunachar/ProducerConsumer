@@ -14,6 +14,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.ideas.producerconsumer.rejection.RejectionStrategy;
 import com.ideas.producerconsumer.resume.ResumeStrategy;
+import com.ideas.producerconsumer.settings.Settings;
 import com.ideas.producerconsumer.task.Task;
 
 /**
@@ -28,12 +29,12 @@ import com.ideas.producerconsumer.task.Task;
 public class Queue
 {
 	private final Log				log					= LogFactory.getLog(getClass());
-	private static final int		CORE_POOL_SIZE		= 20;
-	private static final int		MAX_POOL_SIZE		= 50;
-	private static final long		KEEP_ALIVE_TIME		= 60;
-	private static final TimeUnit	TIME_UNIT			= TimeUnit.SECONDS;
-	private static final int		CAPACITY			= 250;
-	private static final int		RESUME_THRESHOLD	= 15;
+	private static final int		CORE_POOL_SIZE		= Settings.CORE_POOL_SIZE;
+	private static final int		MAX_POOL_SIZE		= Settings.MAX_POOL_SIZE;
+	private static final long		KEEP_ALIVE_TIME		= Settings.KEEP_ALIVE_TIME;
+	private static final TimeUnit	TIME_UNIT			= TimeUnit.MILLISECONDS;
+	private static final int		CAPACITY			= Settings.CAPACITY;
+	private static final int		RESUME_THRESHOLD	= Settings.RESUME_THRESHOLD;
 	
 	private ExecutorService			service;
 	private BlockingQueue<Runnable>	blockingQueue;
