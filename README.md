@@ -12,8 +12,17 @@ The strategy to use to resume tasks previously rejected by the Queue. An exmaple
 
 
 <b>How to use:</b><br>
+Supply a <b>queue.properties</b> file in the classpath. The properties needed are :
+<ul>
+	<li>corePoolSize</li>
+	<li>maxPoolSize</li>
+	<li>keepAliveTime</li>
+	<li>capacity</li>
+	<li>resumeThreshold</li>
+<ul>
+Documentation of the properties needed can be read in the Settings.java class.
+ 
 Queue can be created using 2 constructors.
-
 <code>Queue queue = new Queue(new RejectionStrategy());</code>
 or
 <code>Queue queue = new Queue(new RejectionStrategy(), new ResumeStrategy());</code>
