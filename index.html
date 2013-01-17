@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ProducerConsumer by varunachar</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ProducerConsumer</h1>
+        <p>Simple producer consumer</p>
+
+        <p class="view"><a href="https://github.com/varunachar/ProducerConsumer">View the Project on GitHub <small>varunachar/ProducerConsumer</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/varunachar/ProducerConsumer/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/varunachar/ProducerConsumer/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/varunachar/ProducerConsumer">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>ProducerConsumer</h1>
+
+<p>Simple producer consumer implementation with an example.</p>
+
+<p><strong>RejectionStrategy</strong>
+The strategy to use when a Task has been rejected by the Queue. An example FileRejectionStrategy can be found in the test folder.</p>
+
+<p><strong>ResumeStrategy</strong>
+The strategy to use to resume tasks previously rejected by the Queue. An exmaple FileResumeStrategy can be found in the test folder.</p>
+
+<p><strong>How to use:</strong><br>
+Supply a <strong>queue.properties</strong> file in the classpath. The properties needed are :</p>
+
+<ul>
+<li>corePoolSize</li>
+    <li>maxPoolSize</li>
+    <li>keepAliveTime</li>
+    <li>capacity</li>
+    <li>resumeThreshold</li>
+</ul><p>Documentation of the properties needed can be read in the Settings.java class.</p>
+
+<p>Queue can be created using 2 constructors.<br><code>Queue queue = new Queue(new RejectionStrategy());</code><br>
+or<br><code>Queue queue = new Queue(new RejectionStrategy(), new ResumeStrategy());</code><br></p>
+
+<p>If a ResumeStrategy has been specified, the queue needs to the told to start looking for failed tasks. That can be done like so:<br><code>queue.start();</code><br></p>
+
+<p>The example in the test folder shows how the queue can been used. It produces emails with file attachments. The task simply prints the email contents (doesn't actually send it). It utilizes full rejection and resumption capabilities of the queue.<br></p>
+
+<p>This is a maven project built for Java 5 and above. Non maven users will need to download <strong>Apache's CommonsIO</strong> and <strong>Jackson library</strong> and add to classpath for running the test. No other dependencies needed for the project.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/varunachar">varunachar</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
