@@ -107,7 +107,7 @@ public class File
 	}
 	
 	/**
-	 * Read lines and delete them from the file.
+	 * Read number of lines passed in parameter and delete them from the file.
 	 * @param number The number of lines to read.
 	 * @return Each line in a index of the array.
 	 */
