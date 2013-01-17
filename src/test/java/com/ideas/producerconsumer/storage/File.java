@@ -22,6 +22,10 @@ public class File
 	private final static Lock			writeLock	= lock.writeLock();
 	private final static Lock			readLock	= lock.readLock();
 	
+	/**
+	 * Write the bytes to disk.
+	 * @param bytes
+	 */
 	public static void write(byte[] bytes)
 	{
 		RandomAccessFile raf = null;
@@ -58,6 +62,11 @@ public class File
 		}
 	}
 	
+	/**
+	 * Read lines from the file.
+	 * @param number The number of lines to read.
+	 * @return Each line as a index of the array.
+	 */
 	public static String[] readLine(int number)
 	{
 		RandomAccessFile raf = null;
@@ -97,8 +106,17 @@ public class File
 		return lines;
 	}
 	
+	/**
+	 * Read lines and delete them from the file.
+	 * @param number The number of lines to read.
+	 * @return Each line in a index of the array.
+	 */
 	public static String[] readAndDelete(int number)
 	{
+		if(number == 0)
+		{
+			return new String[0];
+		}
 		RandomAccessFile raf = null;
 		writeLock.lock();
 		String[] lines = new String[number];
@@ -111,7 +129,7 @@ public class File
 			{
 				readPointerStart = raf.getFilePointer();
 				String readLine = raf.readLine();
-				if(readLine==null)
+				if(readLine == null)
 				{
 					return lines;
 				}
