@@ -123,6 +123,10 @@ public class File
 		try
 		{
 			raf = new RandomAccessFile(file, "rw");
+			if(raf.length() == 0)
+			{
+				return new String[0];
+			}
 			long readPointerStart = 0;
 			long readPointerEnd = 0;
 			readPointerStart = raf.getFilePointer();

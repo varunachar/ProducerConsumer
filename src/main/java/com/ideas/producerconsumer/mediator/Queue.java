@@ -36,8 +36,8 @@ public class Queue
 	private static final int		CAPACITY			= Settings.CAPACITY;
 	private static final int		RESUME_THRESHOLD	= Settings.RESUME_THRESHOLD;
 	
-	private ExecutorService			service;
-	private BlockingQueue<Runnable>	blockingQueue;
+	private BlockingQueue<Runnable>	blockingQueue = new ArrayBlockingQueue<Runnable>(CAPACITY);;
+	private ExecutorService			service = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME, TIME_UNIT, this.blockingQueue);
 	/**
 	 * The strategy to use once the task has been rejected.
 	 */
@@ -59,8 +59,6 @@ public class Queue
 	public Queue(RejectionStrategy rejectionStrategy)
 	{
 		this.rejectionStrategy = rejectionStrategy;
-		this.blockingQueue = new ArrayBlockingQueue<Runnable>(CAPACITY);
-		this.service = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME, TIME_UNIT, blockingQueue);
 	}
 	
 	/**
@@ -144,5 +142,15 @@ public class Queue
 	{
 		log.info("Service is shutting down.");
 		service.shutdown();
+	}
+	
+	/**
+	 * Set the executor service to use for managing tasks. By default a {@link ThreadPoolExecutor} with
+	 * the settings defined in the queue.properties file is used.
+	 * @param service
+	 */
+	public void setService(ExecutorService service)
+	{
+		this.service = service;
 	}
 }
