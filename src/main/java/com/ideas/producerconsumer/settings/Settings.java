@@ -18,7 +18,7 @@ import com.ideas.producerconsumer.util.PropertiesLoader;
  */
 public class Settings
 {
-	private final static Log log = LogFactory.getLog(Settings.class);
+	private final static Log	log					= LogFactory.getLog(Settings.class);
 	private static Properties	settings;
 	static
 	{
@@ -56,4 +56,10 @@ public class Settings
 	 * the queue will start looking for previously failed tasks to complete. Default 30.
 	 */
 	public static final int		RESUME_THRESHOLD	= Integer.parseInt(settings.getProperty("resumeThreshold", "30"));
+	
+	/**
+	 * Amount of time in milliseconds that the queue should wait for allowing perviously submitted tasks to complete once {@link Queue#shutdown()}
+	 * has been called. Once this period has expires, the queue will force fully shutdown. Time in <b>milliseconds</b>. Default 60000.
+	 */
+	public static final long	TERMINATION_TIMEOUT	= Long.parseLong(settings.getProperty("terminationTimeout", "60000"));
 }

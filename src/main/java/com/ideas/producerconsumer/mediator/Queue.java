@@ -142,6 +142,14 @@ public class Queue
 	{
 		log.info("Service is shutting down.");
 		service.shutdown();
+		try
+		{
+			service.awaitTermination(Settings.TERMINATION_TIMEOUT, TimeUnit.MILLISECONDS);
+		}
+		catch(InterruptedException e)
+		{
+			log.error("Could not await termination of queue because " + e.getMessage(), e);
+		}
 	}
 	
 	/**

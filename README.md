@@ -19,9 +19,10 @@ Supply a <b>queue.properties</b> file in the classpath. The properties needed ar
 	<li>keepAliveTime</li>
 	<li>capacity</li>
 	<li>resumeThreshold</li>
+	<li>terminationTimeout</li>
 </ul>
 
-Documentation of the properties needed can be read in the Settings.java class.
+Documentation of the properties needed can be found in the Settings.java class.
  
 Queue can be created using 2 constructors.
 <code>Queue queue = new Queue(new RejectionStrategy());</code>
