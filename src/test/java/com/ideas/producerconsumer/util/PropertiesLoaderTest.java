@@ -15,7 +15,7 @@ public class PropertiesLoaderTest
 		Properties propertyFile;
 		try
 		{
-			propertyFile = PropertiesLoader.getPropertyFile("settings.properties");
+			propertyFile = PropertiesLoader.getPropertyFile("queue.properties");
 			Assert.assertNotNull(propertyFile);
 			System.out.println(propertyFile.get("corePoolSize"));
 			Assert.assertNotNull(propertyFile.get("corePoolSize"));
@@ -30,7 +30,7 @@ public class PropertiesLoaderTest
 	@Test(expected=FileNotFoundException.class)
 	public void testGetPropertyFileWithIncorrectFile() throws FileNotFoundException
 	{
-		Properties propertyFile = PropertiesLoader.getPropertyFile("settings1.properties");
+		Properties propertyFile = PropertiesLoader.getPropertyFile("settings.properties");
 		Assert.assertNotNull(propertyFile);
 		System.out.println(propertyFile.get("corePoolSize"));
 		Assert.assertNotNull(propertyFile.get("corePoolSize"));
