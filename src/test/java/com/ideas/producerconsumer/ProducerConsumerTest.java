@@ -17,7 +17,7 @@ public class ProducerConsumerTest
 	private static final String	FILE_1	= "C:" + File.separator + "Users" + File.separator + "Owner" + File.separator + "Desktop" + File.separator + "PC Test files" + File.separator + "websites.txt";
 	private static final String	FILE_2	= "C:" + File.separator + "Users" + File.separator + "Owner" + File.separator + "Desktop" + File.separator + "PC Test files" + File.separator + "Passport application.pdf";
 	private static final String	FILE_3	= "C:" + File.separator + "Users" + File.separator + "Owner" + File.separator + "Desktop" + File.separator + "PC Test files" + File.separator + "ip.png";
-	
+
 	public static void main(String[] args)
 	{
 		ResumeStrategy resumeStrategy = new FileResumeStrategy();
@@ -47,9 +47,18 @@ public class ProducerConsumerTest
 		}
 		System.out.println("initiating shutdown");
 		//Kill system manually or sleep thread for appropriate amount of time to allow test to complete.
-		//queue.shutdown();
+		try
+		{
+			Thread.sleep(3*60000);
+		}
+		catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		queue.shutdown();
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -62,7 +71,7 @@ public class ProducerConsumerTest
 		email.setSubject("Testing producer consumer");
 		return email;
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -74,13 +83,13 @@ public class ProducerConsumerTest
 		attachment.setName("Text File");
 		attachment.setFile(new File(FILE_1));
 		attachments[0] = attachment;
-		
+
 		EmailAttachment attachment1 = new EmailAttachment();
 		attachment1.setExtension("pdf");
 		attachment1.setName("PDF File");
 		attachment1.setFile(new File(FILE_2));
 		attachments[1] = attachment1;
-		
+
 		EmailAttachment attachment2 = new EmailAttachment();
 		attachment2.setExtension("png");
 		attachment2.setName("Image file");
