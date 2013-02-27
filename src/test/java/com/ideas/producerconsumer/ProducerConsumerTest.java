@@ -33,7 +33,7 @@ public class ProducerConsumerTest
 				queue.submit(producer);
 			}
 		};
-		for(int i = 0; i < 2000; i++)
+		for(int i = 0; i < 20; i++)
 		{
 			try
 			{
@@ -49,7 +49,7 @@ public class ProducerConsumerTest
 		//Kill system manually or sleep thread for appropriate amount of time to allow test to complete.
 		try
 		{
-			Thread.sleep(3*60000);
+			Thread.sleep(2*60000);
 		}
 		catch (InterruptedException e)
 		{
