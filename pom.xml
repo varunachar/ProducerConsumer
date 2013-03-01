@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.trelta</groupId>
 	<artifactId>producerconsumer</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<description>A Producer Consumer which will accept any task</description>
 	<packaging>jar</packaging>
 	<name>Producer Consumer</name>
