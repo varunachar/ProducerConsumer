@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.trelta</groupId>
 	<artifactId>producerconsumer</artifactId>
-	<version>1.1.0</version>
+	<version>1.1.1-SNAPSHOT</version>
 	<description>A Producer Consumer which will accept any task</description>
 	<packaging>jar</packaging>
 	<name>Producer Consumer</name>
@@ -11,7 +11,7 @@
 		<connection>scm:git:https://github.com/varunachar/ProducerConsumer.git</connection>
 		<developerConnection>scm:git:https://github.com/varunachar/ProducerConsumer.git</developerConnection>
 		<url>https://github.com/varunachar/ProducerConsumer</url>
-		<tag>vproducerconsumer-1.1.0</tag>
+		<tag>vproducerconsumer-1.0.0</tag>
 	</scm>
 	<distributionManagement>
 		<repository>
