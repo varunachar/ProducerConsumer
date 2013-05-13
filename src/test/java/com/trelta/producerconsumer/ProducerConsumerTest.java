@@ -3,6 +3,8 @@ package com.trelta.producerconsumer;
 
 import java.io.File;
 
+import org.junit.Test;
+
 import com.trelta.producerconsumer.mediator.Queue;
 import com.trelta.producerconsumer.object.Email;
 import com.trelta.producerconsumer.object.EmailAttachment;
@@ -14,11 +16,12 @@ import com.trelta.producerconsumer.task.Task;
 
 public class ProducerConsumerTest
 {
-	private static final String	FILE_1	= "C:" + File.separator + "Users" + File.separator + "Owner" + File.separator + "Desktop" + File.separator + "PC Test files" + File.separator + "websites.txt";
-	private static final String	FILE_2	= "C:" + File.separator + "Users" + File.separator + "Owner" + File.separator + "Desktop" + File.separator + "PC Test files" + File.separator + "Passport application.pdf";
-	private static final String	FILE_3	= "C:" + File.separator + "Users" + File.separator + "Owner" + File.separator + "Desktop" + File.separator + "PC Test files" + File.separator + "ip.png";
+	private static final String	FILE_1	= "C:" + File.separator + "Users" + File.separator + "Owner" + File.separator + "Desktop" + File.separator + "websites.txt";
+	private static final String	FILE_2	= "C:" + File.separator + "Users" + File.separator + "Owner" + File.separator + "Desktop" + File.separator + "Passport application.pdf";
+	private static final String	FILE_3	= "C:" + File.separator + "Users" + File.separator + "Owner" + File.separator + "Desktop" + File.separator + "ip.png";
 
-	public static void main(String[] args)
+	@Test
+	public void test()
 	{
 		ResumeStrategy resumeStrategy = new FileResumeStrategy();
 		final Queue queue = new Queue(new FileRejectionStrategy(), resumeStrategy);
