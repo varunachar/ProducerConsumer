@@ -183,4 +183,15 @@ public class Queue
 	{
 		this.service = service;
 	}
+
+	public boolean isShutdown()
+	{
+		return service.isShutdown();
+	}
+
+	public int size()
+	{
+		return blockingQueue.size();
+	}
+
 }
